@@ -14,6 +14,15 @@ const Screen2 = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>Go Back </Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate("Screen1");
+        }}
+      >
+        <Text style={styles.buttonText}>Go To Screen 3 </Text>
+      </TouchableOpacity>
     </View>
   );
 };
