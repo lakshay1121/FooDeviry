@@ -81,7 +81,9 @@ const styles = StyleSheet.create({
   backgroundimg:{
 
     width:'100%',
-    height:'100%'
+    height:'100%',
+    justifyContent:'center',
+    alignItems:'center'
   }
   ,
   container: {
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
 
   contentContainer: {
 
-    marginLeft:25,
+  
     backgroundColor: "white",
     width: 300,
     height: 200,
