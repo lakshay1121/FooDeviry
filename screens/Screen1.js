@@ -1,40 +1,54 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 
 const Screen1 = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.bannerContainer}>
-        <Image
-          source={require("../images/Screen1_Thali_Image.png")}
-          style={styles.bannerImage}
-          resizeMode="contain"
-        />
-      </View>
-      <View style={styles.contentContainer}>
-
-        <View style={styles.titleContentContainer}>
-
-        <Text style={styles.welcomText}>Welcome to</Text>
-        <Text style={styles.titleText}>
-          Foo<Text style={{ color: "#FF4D4D" }}>D</Text>eviry
-        </Text>
-
+      <ImageBackground
+        source={require("../images/background.jpeg")}
+        style={styles.backgroundimg}
+      >
+        <View style={styles.bannerContainer}>
+          <Image
+            source={require("../images/Screen1_Thali_Image.png")}
+            style={styles.bannerImage}
+            resizeMode="contain"
+          />
         </View>
-       
-        <View style={styles.slangContainer}>
-          <Text style={styles.slang}>Ghar ka agar ho khaana,</Text>
-          <Text style={styles.slang}>FooDeviry aana</Text>
-        </View>
-        
-        <View>
+        <View style={styles.contentContainer}>
+          <View style={styles.titleContentContainer}>
+            <Text style={styles.welcomText}>Welcome to</Text>
+            <Text style={styles.titleText}>
+              Foo<Text style={{ color: "#FF4D4D" }}>D</Text>eviry
+            </Text>
+          </View>
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText} onPress={()=>{navigation.navigate('Screen2')}}>Get Started</Text>
-        </TouchableOpacity>
+          <View style={styles.slangContainer}>
+            <Text style={styles.slang}>Ghar ka agar ho khaana,</Text>
+            <Text style={styles.slang}>FooDeviry aana</Text>
+          </View>
+
+          <View>
+            <TouchableOpacity style={styles.button}>
+              <Text
+                style={styles.buttonText}
+                onPress={() => {
+                  navigation.navigate("Screen2");
+                }}
+              >
+                Get Started
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        
-      </View>
+      </ImageBackground>
     </View>
   );
 };
@@ -71,6 +85,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
   },
+
+  backgroundimg: {
+    width: "100%",
+    height: "100%",
+  },
   container: {
     flex: 1,
     backgroundColor: "#fae2e1",
@@ -79,6 +98,7 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
+    marginLeft: 25,
     backgroundColor: "white",
     width: 300,
     height: 200,
@@ -98,19 +118,16 @@ const styles = StyleSheet.create({
     elevation: 19,
   },
 
-  slangContainer:{
-
-    marginBottom:8,
-    alignItems:'center'
-  }
-,
-  slang: {
-    fontWeight: 'bolder',
-    color: "#811C06",
-    fontSize:18,
-    lineHeight:18.5
+  slangContainer: {
+    marginBottom: 8,
+    alignItems: "center",
   },
-
+  slang: {
+    fontWeight: "bolder",
+    color: "#811C06",
+    fontSize: 18,
+    lineHeight: 18.5,
+  },
 
   titleText: {
     fontSize: 22,
@@ -118,9 +135,8 @@ const styles = StyleSheet.create({
     lineHeight: 34.5,
   },
 
-  titleContentContainer:{
-
-    marginBottom:8
+  titleContentContainer: {
+    marginBottom: 8,
   },
   welcomText: {
     fontSize: 22,
