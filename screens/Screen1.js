@@ -1,9 +1,13 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 
 const Screen1 = ({ navigation }) => {
   return (
+
+    
     <View style={styles.container}>
+
+      <ImageBackground source={require('../images/background.jpeg')}style={styles.backgroundimg}>
       <View style={styles.bannerContainer}>
         <Image
           source={require("../images/Screen1_Thali_Image.png")}
@@ -35,6 +39,8 @@ const Screen1 = ({ navigation }) => {
         </View>
         
       </View>
+
+      </ImageBackground>
     </View>
   );
 };
@@ -71,6 +77,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
   },
+
+  backgroundimg:{
+
+    width:'100%',
+    height:'100%'
+  }
+  ,
   container: {
     flex: 1,
     backgroundColor: "#fae2e1",
@@ -79,6 +92,8 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
+
+    marginLeft:25,
     backgroundColor: "white",
     width: 300,
     height: 200,
