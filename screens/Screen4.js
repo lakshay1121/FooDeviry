@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React from "react";
 
-const Screen4 = () => {
+const Screen4 = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -30,7 +30,7 @@ const Screen4 = () => {
         <View style={styles.selectLocationContainer}>
           <Text style={styles.selectLocationText}>Select Location</Text>
 
-          <TouchableOpacity style={styles.locateMeContainer}>
+          <TouchableOpacity style={styles.locateMeContainer} onPress={()=>{navigation.navigate('Screen5')}}>
             <Text style={styles.locateMeText}>Locate Me</Text>
           </TouchableOpacity>
 
