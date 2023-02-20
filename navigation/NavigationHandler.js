@@ -4,14 +4,16 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Screen1 from "../screens/Screen1";
 import Screen2 from "../screens/Screen2";
+import chefscree1 from "../screens/chefscr/chefscree1"
 
 const NavigationHandler = () => {
 
-    const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator();
 
   return (
 
     <NavigationContainer style={styles.container}>
+
       <Stack.Navigator initialRouteName="Screen1">
         <Stack.Screen
           name="Screen1"
@@ -23,8 +25,14 @@ const NavigationHandler = () => {
           component={Screen2}
           options={{ headerShown: false }}
         />
+
+        <Stack.Screen
+          name="chefscree1"
+          component={chefscree1}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
-      
+
     </NavigationContainer>
   )
 }

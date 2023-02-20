@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
   },
 
   backgroundimg:{
-
+  alignItems:"center",
+  justifyContent:"center",
     width:'100%',
     height:'100%'
   }
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
 
   contentContainer: {
 
-    marginLeft:25,
+
     backgroundColor: "white",
     width: 300,
     height: 200,
@@ -137,6 +138,7 @@ const styles = StyleSheet.create({
 
     marginBottom:8
   },
+  
   welcomText: {
     fontSize: 22,
     fontWeight: "600",
