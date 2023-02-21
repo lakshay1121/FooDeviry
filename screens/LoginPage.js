@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 
-const SignupPage = ({ navigation }) => {
+const LoginPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -71,7 +71,7 @@ const SignupPage = ({ navigation }) => {
   );
 };
 
-export default SignupPage;
+export default LoginPage;
 
 const styles = StyleSheet.create({
   container: {
