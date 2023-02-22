@@ -8,13 +8,18 @@ import SignupPage from "../screens/SignupPage";
 import LoginPage from "../screens/LoginPage";
 import Screen4 from "../screens/Screen4";
 import Screen5 from "../screens/Screen5";
+import AddMenuScreen from "../screens/chefScreens/AddMenuScreen";
+import MenuForm from "../screens/chefScreens/MenuForm";
+
 
 const NavigationHandler = () => {
   const Stack = createNativeStackNavigator();
 
   return (
     <NavigationContainer style={styles.container}>
-      <Stack.Navigator initialRouteName="Screen1">
+      <Stack.Navigator initialRouteName="MenuForm">
+        {}
+
         <Stack.Screen
           name="Screen1"
           component={Screen1}
@@ -47,6 +52,18 @@ const NavigationHandler = () => {
         <Stack.Screen
           name="Screen5"
           component={Screen5}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="AddMenuScreen"
+          component={AddMenuScreen}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="MenuForm"
+          component={MenuForm}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
