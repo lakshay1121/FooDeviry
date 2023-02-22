@@ -7,19 +7,42 @@ import {
   View,
 } from "react-native";
 import React from "react";
+import { SelectList } from "react-native-dropdown-select-list";
+import { useState } from "react";
+const data = [
+
+  {key:'1', value:'Gurugram'},
+  {key:'2', value:'Farukhnagar'},
+  {key:'3', value:'Sector 105 , gurugram'},
+  {key:'4', value:'Najafgarh , Delhi'},
+  {key:'5', value:'Chauam Road Crossing'},
+  
+  
+]
 
 const Screen1 = ({ navigation }) => {
+
+
+  const [selected, setSelected] = useState('');
+  
   return (
     <View style={styles.container}>
 
         <ImageBackground source={require('../images/googlemaptemplate.png')} style={styles.backgroundimg}>
       <View style={styles.selectLocationMainContainer}>
-        {/* <TouchableOpacity>
-          <Text style={styles.selectLocationBackButton}>{"<"}</Text>
-        </TouchableOpacity> */}
-        <TouchableOpacity style={styles.selectLocationContainer}>
-          <Text style={styles.selectLocationText}>Select Location</Text>
-        </TouchableOpacity>
+      
+        <SelectList 
+        boxStyles={styles.selectLocationContainer}
+         inputStyles={styles.selectLocationText}
+          data={data}
+           setSelected={(val)=>{setSelected(val)}}
+           dropdownStyles={styles.selectLocationContainer}
+           dropdownItemStyles={styles.selectLocationText}
+           placeholder="Select Your Location"
+           defaultOption={data[2]}
+           
+           />
+         
       </View>
 
       <View style={styles.contentContainer}>
@@ -37,7 +60,7 @@ const Screen1 = ({ navigation }) => {
             <Text
               style={styles.buttonText}
               onPress={() => {
-                navigation.navigate("");
+                navigation.navigate("AddMenuScreen");
               }}
             >
               Confirm Location
@@ -121,8 +144,10 @@ const styles = StyleSheet.create({
   },
 
   selectLocationContainer: {
+
     backgroundColor: "white",
     borderRadius: 20,
+    width:"90%",
     
 
     shadowColor: "black",
@@ -138,7 +163,7 @@ const styles = StyleSheet.create({
   },
 
   selectLocationText: {
-    padding: 14,
+    paddingLeft:20,
     fontWeight: "700",
   },
 
