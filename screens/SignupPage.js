@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import {
   Image,
   StyleSheet,
@@ -5,33 +7,72 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Alert,
 } from "react-native";
-import React from "react";
+
+import { auth } from "./../authentication/api";
 
 const SignupPage = ({ navigation }) => {
+
+ 
+  const [email, setEmail] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  
+  const handleSignup = () => {
+    if (password !== confirmPassword) {
+      Alert.alert("Error", "Passwords do not match");
+      return;
+    }
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(userCredentials => {
+        const user = userCredentials.user;
+        console.log("Registered with:",user.email);
+     
+        navigation.navigate("LoginPage");
+
+      })
+      .catch(error=>alert(error.message));
+  };
+
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={require("../images/screen3.jpeg")} style={styles.img} />
+        <Image
+          source={require("../images/screen3.jpeg")}
+          style={styles.img}
+        />
       </View>
 
       <View style={styles.loginSignupContainer}>
-
-        <TouchableOpacity style={styles.loginContainer} onPress={()=>{navigation.navigate('LoginPage')}}  >
+        <TouchableOpacity
+          style={styles.loginContainer}
+          onPress={() => {
+            navigation.navigate("LoginPage");
+          }}
+        >
           <Text style={styles.loginSignupText}>Login</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.signupContainer} >
+        <TouchableOpacity style={styles.signupContainer}>
           <Text style={styles.loginSignupText}>Sign-up</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.registerIconsContainer}>
         <Text style={styles.registerText}>Register</Text>
-        <Image
-          source={require("../images/googleIcon.png")}
-          style={{ width: 40, height: 40 }}
-        />
+        
+        <TouchableOpacity onPress={signInWithGoogle}>
+          <Image
+            source={require("../images/googleIcon.png")}
+            style={{ width: 40, height: 40 }}
+          />
+        </TouchableOpacity>
         <Image
           source={require("../images/facebookIcon.png")}
           style={{ width: 38, height: 38 }}
@@ -39,27 +80,50 @@ const SignupPage = ({ navigation }) => {
       </View>
 
       <View style={styles.formContainer}>
-        <TextInput placeholder="Full Name" style={styles.textInput} />
-        <TextInput style={styles.textInput} placeholder="Mobile Number" />
-        <TextInput style={styles.textInput} placeholder="Password" />
-        <TextInput style={styles.textInput} placeholder="Confirm Password" />
+      <TextInput
+          placeholder="Email"
+          style={styles.textInput}
+          value={email}
+          onChangeText={text=>setEmail(text)}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Mobile Number"
+          value={mobileNumber}
+          onChangeText={text=>setMobileNumber(text)}
+          
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Password"
+          secureTextEntry
+          value={password}
+          onChangeText={text=>setPassword(text)}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Confirm Password"
+          secureTextEntry
+          value={confirmPassword}
+          onChangeText={text=>setConfirmPassword(text)}
+        />
       </View>
 
       <View style={styles.signupButtonContainer}>
         <TouchableOpacity
           style={styles.signupTextContainer}
-          onPress={() => {
-            navigation.navigate("Screen4");
-          }}
+          onPress={handleSignup}
         >
           <Text style={styles.signupText}>Sign-up</Text>
         </TouchableOpacity>
 
-      
-
         <TouchableOpacity>
           <Text>Already a Member?</Text>
-          <TouchableOpacity onPress={()=>{navigation.navigate('LoginPage')}}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("LoginPage");
+            }}
+          >
             <Text style={{ fontWeight: "700" }}>Login.</Text>
           </TouchableOpacity>
         </TouchableOpacity>

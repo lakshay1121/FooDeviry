@@ -1,3 +1,5 @@
+import React, {useEffect, useState } from "react";
+
 import {
   Image,
   StyleSheet,
@@ -6,9 +8,37 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
 
-const SignupPage = ({ navigation }) => {
+import { auth } from "./../authentication/api";
+
+
+const LoginPage = ({ navigation }) => {
+
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("");
+
+
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged((user) => {
+  //     if (email && password) {
+  //       navigation.navigate("Screen4");
+  //     }
+  //   });
+  //   return unsubscribe;
+  // }, [email, password]);
+
+  const handleLogin = () => {
+    auth.signInWithEmailAndPassword(email, password).then(userCredentials => {
+      const user = userCredentials.user;
+      console.log("Logged in with:", user.email);
+
+      navigation.navigate("Screen4");
+
+    })
+      .catch(error => alert(error.message));
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -25,7 +55,7 @@ const SignupPage = ({ navigation }) => {
           <Text style={styles.loginSignupText}>Login</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.signupContainer} onPress={()=>navigation.navigate('SignupPage')}>
+        <TouchableOpacity style={styles.signupContainer} onPress={() => navigation.navigate('SignupPage')}>
           <Text style={styles.loginSignupText}>Sign-up</Text>
         </TouchableOpacity>
       </View>
@@ -43,26 +73,42 @@ const SignupPage = ({ navigation }) => {
       </View>
 
       <View style={styles.loginloginloginFormContainer}>
-        <TextInput placeholder="Email address" style={styles.textInput} />
-        <TextInput style={styles.textInput} placeholder="Password" />
-        <TextInput  />
-        <TextInput  />
-      
+        <TextInput
+          placeholder="Email"
+          style={styles.textInput}
+          value={email}
+          onChangeText={text => setEmail(text)}
+        />
+
+        <TextInput
+          style={styles.textInput}
+          placeholder="Password"
+          secureTextEntry
+          value={password}
+          onChangeText={text => setPassword(text)}
+        />
+
       </View>
 
       <View style={styles.signupButtonContainer}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.signupTextContainer}
           onPress={() => {
             navigation.navigate("Screen4");
           }}
         >
           <Text style={styles.signupText}>Login</Text>
+        </TouchableOpacity> */}
+        <TouchableOpacity
+          style={styles.signupTextContainer}
+          onPress={handleLogin}
+        >
+          <Text style={styles.signupText}>Login</Text>
         </TouchableOpacity>
 
         <TouchableOpacity>
           <Text>Don't have an account?</Text>
-          <TouchableOpacity onPress={()=>{navigation.navigate('SignupPage')}}>
+          <TouchableOpacity onPress={() => { navigation.navigate('SignupPage') }}>
             <Text style={{ fontWeight: "700" }}>Register.</Text>
           </TouchableOpacity>
         </TouchableOpacity>
@@ -71,7 +117,7 @@ const SignupPage = ({ navigation }) => {
   );
 };
 
-export default SignupPage;
+export default LoginPage;
 
 const styles = StyleSheet.create({
   container: {
@@ -80,10 +126,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
 
-    
+
   },
-  imageContainer:{
-     marginBottom:45
+  imageContainer: {
+    marginBottom: 45
   },
 
   img: {
