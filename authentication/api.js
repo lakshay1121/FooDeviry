@@ -1,17 +1,18 @@
 // Import the functions you need from the SDKs you need
 import * as firebase from "firebase";
 
-// TODO: Add SDKs for Firebase products that you want to use
+// TODO: Add SDKs for Firebase products that you want tobr use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBqf3fJCVYQPoJ6XzSRiE66agtWgQWQZoE",
-  authDomain: "foodivery-1c55f.firebaseapp.com",
-  projectId: "foodivery-1c55f",
-  storageBucket: "foodivery-1c55f.appspot.com",
-  messagingSenderId: "915569507918",
-  appId: "1:915569507918:web:763588658bf70d60d60d1f"
+  apiKey: "AIzaSyAwt_wwP22WlgS9UezCl36OGuSiTxMfCJw",
+  authDomain: "foodeviry.firebaseapp.com",
+  projectId: "foodeviry",
+  storageBucket: "foodeviry.appspot.com",
+  messagingSenderId: "740955596727",
+  appId: "1:740955596727:web:70d07364cc017a83faea32",
+  measurementId: "G-87R50NEK60",
 };
 
 

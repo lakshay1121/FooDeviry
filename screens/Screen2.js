@@ -1,12 +1,12 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import React from "react";
+import { StatusBar } from 'react-native';
 
 const Screen2 = ({ navigation }) => {
   return (
     <View style={styles.container}>
-
       <View style={styles.imageContainer}>
-        <Image source={require("../images/desithali.png")} style={styles.img} />
+        <Image source={require("../images/screen2banner.png")} style={styles.img} resizeMode="center" />
       </View>
       <View style={styles.secondsection}>
         <View style={styles.loginSignupContainer}>
@@ -20,34 +20,46 @@ const Screen2 = ({ navigation }) => {
         </View>
 
         <View style={styles.provideruser} >
+
+
           <View style={styles.provider}>
             <TouchableOpacity style={styles.providercontainer} onPress={() => { navigation.navigate('LoginPage') }}  >
               <Text style={styles.providertext}>Provider</Text>
             </TouchableOpacity>
           </View>
+          <Text style={styles.or}>OR</Text>
           <View style={styles.user}>
             <TouchableOpacity style={styles.usercontainer} onPress={() => { navigation.navigate('LoginPage') }}  >
               <Text style={styles.usertext}>User</Text>
             </TouchableOpacity>
           </View>
+
         </View>
+
+        <View style={styles.bottomContainer}>
         <TouchableOpacity style={styles.forgotpassword} onPress={() => { navigation.navigate('LoginPage') }}  >
           <Text style={styles.password}>Forgot password?</Text>
         </TouchableOpacity>
 
         <View style={styles.loginIconsContainer}>
 
-          <Image
-            source={require("../images/googleIcon.png")}
-            style={{ width: 50, height: 40 }}
-          />
-          <Image
-            source={require("../images/facebookIcon.png")}
-            style={{ width: 40, height: 38 }}
-          />
-        </View>
+
+
+        <Image
+          source={require("../images/googleIcon.png")}
+          style={{ width: 35, height: 35 }}
+        />
+        <Image
+          source={require("../images/facebookIcon.png")}
+          style={{ width: 30, height: 30 }}
+        />
+      </View>
+      </View>
+
+
 
       </View>
+      
 
 
     </View>
@@ -63,12 +75,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
+  bottomContainer:{
+
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center',
+    paddingTop:10,
+    
+  
+  },
   buttonText: {
     color: "white",
   },
   container: {
     flex: 1,
-    backgroundColor: "#fae2e1",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -83,7 +105,16 @@ const styles = StyleSheet.create({
   loginSignupContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 50,
+    marginBottom: 45
+
+  },
+
+  or: {
+
+
+    fontWeight:'600'
+
+
   },
 
   loginSignupText: {
@@ -96,15 +127,15 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 0.1,
     borderBottomColor: "black",
   },
+  
+  imageContainer: {
+    marginBottom: 60
+  },
+
   img: {
     width: 420,
-    borderRadius: 35,
-    height: 380,
-
-  },
-  imageContainer: {
-    position: "absolute",
-    top: 5
+    borderRadius: 50,
+    height: 342,
   },
 
   providertext: {
@@ -122,13 +153,15 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    top: 120
+    paddingBottom:100
+  
 
   },
 
   forgotpassword: {
 
-    paddingRight: 80,
+    paddingRight:10
+    
   },
 
   password: {
@@ -146,7 +179,7 @@ const styles = StyleSheet.create({
   },
 
   providercontainer: {
-    backgroundColor: "white",
+    backgroundColor: "#EBD5D5",
     borderRadius: 15,
     marginBottom: 15,
     width: 250
@@ -155,9 +188,9 @@ const styles = StyleSheet.create({
 
   usercontainer: {
 
-    backgroundColor: "white",
+    backgroundColor: "#EBD5D5",
     borderRadius: 15,
-    marginBottom: 15,
+    margin: 15,
     width: 250,
     height: 55
   },
@@ -165,11 +198,25 @@ const styles = StyleSheet.create({
   loginIconsContainer: {
     display: "flex",
     flexDirection: "row",
-    padding: 30,
-  
+    
 
-  
+
+
   },
 
+  provideruser: {
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: "center"
+  }
+
+  ,
+
+  loginText: {
+    fontSize: 30,
+    color: "#C3B6B2",
+    marginRight: 30,
+  },
 
 });

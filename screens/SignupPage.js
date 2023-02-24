@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   loginSignupContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 20,
+    padding: 30
   },
 
   loginContainer: {
@@ -166,6 +166,11 @@ const styles = StyleSheet.create({
     // borderBottomEndRadius: 0.1,
     // borderBottomColor: "#FA4A0C",
   },
+
+  imageContainer: {
+    marginTop:50
+  },
+
   signupContainer: {
 
     borderBottomWidth: 3.8,

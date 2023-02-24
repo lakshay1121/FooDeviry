@@ -18,16 +18,7 @@ const LoginPage = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
 
-
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((user) => {
-  //     if (email && password) {
-  //       navigation.navigate("Screen4");
-  //     }
-  //   });
-  //   return unsubscribe;
-  // }, [email, password]);
-
+  
   const handleLogin = () => {
     auth.signInWithEmailAndPassword(email, password).then(userCredentials => {
       const user = userCredentials.user;
@@ -41,10 +32,11 @@ const LoginPage = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      
       <View style={styles.imageContainer}>
         <Image source={require("../images/screen3.jpeg")} style={styles.img} />
       </View>
-
+ 
       <View style={styles.loginSignupContainer}>
         <TouchableOpacity
           style={styles.loginContainer}
@@ -52,6 +44,7 @@ const LoginPage = ({ navigation }) => {
             navigation.navigate("LoginPage");
           }}
         >
+  
           <Text style={styles.loginSignupText}>Login</Text>
         </TouchableOpacity>
 
@@ -114,6 +107,7 @@ const LoginPage = ({ navigation }) => {
         </TouchableOpacity>
       </View>
     </View>
+
   );
 };
 
@@ -129,7 +123,7 @@ const styles = StyleSheet.create({
 
   },
   imageContainer: {
-    marginBottom: 45
+    marginBottom: 60
   },
 
   img: {
@@ -147,6 +141,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 20,
+    paddingBottom:10
+
   },
 
   loginContainer: {
@@ -173,7 +169,7 @@ const styles = StyleSheet.create({
   },
 
   signupButtonContainer: {
-    paddingBottom: 85,
+    paddingBottom: 145,
     padding: 20,
     display: "flex",
     flexDirection: "row",
