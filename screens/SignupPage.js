@@ -67,7 +67,7 @@ const SignupPage = ({ navigation }) => {
       <View style={styles.registerIconsContainer}>
         <Text style={styles.registerText}>Register</Text>
         
-        <TouchableOpacity onPress={signInWithGoogle}>
+        <TouchableOpacity onPress={()=>{}}>
           <Image
             source={require("../images/googleIcon.png")}
             style={{ width: 40, height: 40 }}
