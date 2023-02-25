@@ -9,15 +9,15 @@ import LoginPage from "../screens/LoginPage";
 import Screen4 from "../screens/Screen4";
 import Screen5 from "../screens/Screen5";
 import AddMenuScreen from "../screens/chefScreens/AddMenuScreen";
-import MenuForm from "../screens/chefScreens/MenuForm";
-
+import ShowMenu from "../screens/chefScreens/ShowMenu";
+import ShowOrders from "../screens/chefScreens/ShowOrders";
 
 const NavigationHandler = () => {
   const Stack = createNativeStackNavigator();
 
   return (
     <NavigationContainer style={styles.container}>
-      <Stack.Navigator initialRouteName="MenuForm">
+      <Stack.Navigator initialRouteName="Screen1">
         {}
 
         <Stack.Screen
@@ -60,10 +60,15 @@ const NavigationHandler = () => {
           component={AddMenuScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="ShowMenu"
+          component={ShowMenu}
+          options={{ headerShown: false }}
+        />
 
         <Stack.Screen
-          name="MenuForm"
-          component={MenuForm}
+          name="ShowOrders"
+          component={ShowOrders}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
