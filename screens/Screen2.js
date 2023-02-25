@@ -1,28 +1,84 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import React from "react";
+
 
 const Screen2 = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>Screen2</Text>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require("../images/screen2banner.png")}
+          style={styles.img}
+          resizeMode="center"
+        />
+      </View>
+      <View style={styles.secondsection}>
+        <View style={styles.loginSignupContainer}>
+          <TouchableOpacity
+            style={styles.loginContainer}
+            onPress={() => {
+              navigation.navigate("LoginPage");
+            }}
+          >
+            <Text style={styles.loginSignupText}>Login</Text>
+          </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          navigation.navigate("Screen1");
-        }}
-      >
-        <Text style={styles.buttonText}>Go Back </Text>
-      </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.signupContainer}
+            onPress={() => {
+              navigation.navigate("SignupPage");
+            }}
+          >
+            <Text style={styles.loginSignupText}>Sign-up</Text>
+          </TouchableOpacity>
+        </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          navigation.navigate("Screen1");
-        }}
-      >
-        <Text style={styles.buttonText}>Go To Screen 3 </Text>
-      </TouchableOpacity>
+        <View style={styles.provideruser}>
+          <View style={styles.provider}>
+            <TouchableOpacity
+              style={styles.providercontainer}
+              onPress={() => {
+                navigation.navigate("LoginPage");
+              }}
+            >
+              <Text style={styles.providertext}>Provider</Text>
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.or}>OR</Text>
+          <View style={styles.user}>
+            <TouchableOpacity
+              style={styles.usercontainer}
+              onPress={() => {
+                navigation.navigate("LoginPage");
+              }}
+            >
+              <Text style={styles.usertext}>User</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View style={styles.bottomContainer}>
+          <TouchableOpacity
+            style={styles.forgotpassword}
+            onPress={() => {
+              navigation.navigate("LoginPage");
+            }}
+          >
+            <Text style={styles.password}>Forgot password?</Text>
+          </TouchableOpacity>
+
+          <View style={styles.loginIconsContainer}>
+            <Image
+              source={require("../images/googleIcon.png")}
+              style={{ width: 35, height: 35 }}
+            />
+            <Image
+              source={require("../images/facebookIcon.png")}
+              style={{ width: 30, height: 30 }}
+            />
+          </View>
+        </View>
+      </View>
     </View>
   );
 };
@@ -36,13 +92,122 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
+  bottomContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 10,
+  },
   buttonText: {
     color: "white",
   },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  loginContainer: {
+    marginRight: 150,
+    borderBottomWidth: 2.5,
+    borderBottomEndRadius: 0.1,
+    borderBottomColor: "black",
+  },
+
+  loginSignupContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 45,
+    paddingTop:30
+  },
+
+  or: {
+    fontWeight: "600",
+  },
+
+  loginSignupText: {
+    fontSize: 16,
+    fontWeight: "700",
+  },
+  signupContainer: {
+    borderBottomWidth: 2.5,
+    borderBottomEndRadius: 0.1,
+    borderBottomColor: "black",
+  },
+
+  imageContainer: {
+    
+  },
+
+  img: {
+    width: 420,
+    borderRadius: 50,
+    height: 342,
+  },
+
+  providertext: {
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+
+  secondsection: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingBottom: 100,
+  },
+
+  forgotpassword: {
+    paddingRight: 10,
+  },
+
+  password: {
+    fontWeight: "bold",
+  },
+
+  usertext: {
+    paddingLeft: 100,
+    paddingTop: 10,
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+
+  providercontainer: {
+    backgroundColor: "#EBD5D5",
+    borderRadius: 25,
+    marginBottom: 15,
+    width: 250,
+    height:55,
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center'
+  },
+
+  usercontainer: {
+    backgroundColor: "#EBD5D5",
+    borderRadius: 25,
+    margin: 15,
+    width: 250,
+    height: 55,
+  },
+
+  loginIconsContainer: {
+    display: "flex",
+    flexDirection: "row",
+  },
+
+  provideruser: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  loginText: {
+    fontSize: 30,
+    color: "#C3B6B2",
+    marginRight: 30,
   },
 });
