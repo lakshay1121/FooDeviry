@@ -8,6 +8,8 @@ const Screen1 = ({ navigation }) => {
     <View style={styles.container}>
 
       <ImageBackground source={require('../images/background.jpeg')}style={styles.backgroundimg}>
+  
+
       <View style={styles.bannerContainer}>
         <Image
           source={require("../images/Screen1_Thali_Image.png")}
@@ -92,6 +94,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
 
   contentContainer: {
 

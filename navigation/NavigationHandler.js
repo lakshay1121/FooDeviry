@@ -8,7 +8,9 @@ import SignupPage from "../screens/SignupPage";
 import LoginPage from "../screens/LoginPage";
 import Screen4 from "../screens/Screen4";
 import Screen5 from "../screens/Screen5";
-import AddMenuScreen from "../screens/AddMenuScreen";
+import AddMenuScreen from "../screens/chefScreens/AddMenuScreen";
+import ShowMenu from "../screens/chefScreens/ShowMenu";
+import ShowOrders from "../screens/chefScreens/ShowOrders";
 
 const NavigationHandler = () => {
   const Stack = createNativeStackNavigator();
@@ -16,6 +18,8 @@ const NavigationHandler = () => {
   return (
     <NavigationContainer style={styles.container}>
       <Stack.Navigator initialRouteName="Screen1">
+        {}
+
         <Stack.Screen
           name="Screen1"
           component={Screen1}
@@ -45,19 +49,28 @@ const NavigationHandler = () => {
           options={{ headerShown: false }}
         />
 
-<Stack.Screen
+        <Stack.Screen
           name="Screen5"
           component={Screen5}
           options={{ headerShown: false }}
         />
 
-<Stack.Screen
+        <Stack.Screen
           name="AddMenuScreen"
           component={AddMenuScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="ShowMenu"
+          component={ShowMenu}
+          options={{ headerShown: false }}
+        />
 
-        
+        <Stack.Screen
+          name="ShowOrders"
+          component={ShowOrders}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

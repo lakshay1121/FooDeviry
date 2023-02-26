@@ -71,7 +71,7 @@ const Screen5 = ({ navigation }) => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.confirmButton}
-          onPress={() => navigation.navigate("DeliveryInfo")}
+          onPress={() => navigation.navigate("AddMenuScreen")}
         >
           <Text style={styles.confirmButtonText}>Confirm Location</Text>
         </TouchableOpacity>
@@ -126,14 +126,16 @@ const styles = StyleSheet.create({
   confirmButton: {
     backgroundColor: "#F9A826",
     padding: 12,
-    borderRadius: 6,
-    width: "80%",
+    borderRadius: 25,
+    width: "60%",
     alignItems: "center",
+    height:50
+   
   },
   confirmButtonText:{
 
     color: "#fff",
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
 
   },
