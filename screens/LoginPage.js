@@ -9,8 +9,9 @@ import {
   View,
 } from "react-native";
 
-import { auth } from "./../authentication/api";
+import changePassword from "./../firebasedump/ResetPassword"
 
+import { handleLogin } from "../firebasedump/HandleLogin";
 
 const LoginPage = ({ navigation }) => {
 
@@ -18,17 +19,6 @@ const LoginPage = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
 
-  
-  const handleLogin = () => {
-    auth.signInWithEmailAndPassword(email, password).then(userCredentials => {
-      const user = userCredentials.user;
-      console.log("Logged in with:", user.email);
-
-      navigation.navigate("Screen4");
-
-    })
-      .catch(error => alert(error.message));
-  }
 
   return (
     <View style={styles.container}>
@@ -94,16 +84,14 @@ const LoginPage = ({ navigation }) => {
         </TouchableOpacity> */}
         <TouchableOpacity
           style={styles.signupTextContainer}
-          onPress={handleLogin}
+          onPress={()=>handleLogin(email, password, navigation)}
         >
           <Text style={styles.signupText}>Login</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity>
-          <Text>Don't have an account?</Text>
-          <TouchableOpacity onPress={() => { navigation.navigate('SignupPage') }}>
-            <Text style={{ fontWeight: "700" }}>Register.</Text>
-          </TouchableOpacity>
+        <TouchableOpacity onPress={changePassword}>
+          <Text style={{fontWeight:"700"}}>Forgot Password?</Text>
+    
         </TouchableOpacity>
       </View>
     </View>

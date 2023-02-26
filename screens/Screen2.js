@@ -2,7 +2,12 @@ import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import React from "react";
 import { StatusBar } from 'react-native';
 
+import changePassword from "./../firebasedump/ResetPassword"
+
+
 const Screen2 = ({ navigation }) => {
+  
+  
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -37,7 +42,7 @@ const Screen2 = ({ navigation }) => {
         </View>
 
         <View style={styles.bottomContainer}>
-        <TouchableOpacity style={styles.forgotpassword} onPress={() => { navigation.navigate('LoginPage') }}  >
+        <TouchableOpacity style={styles.forgotpassword} onPress={changePassword}  >
           <Text style={styles.password}>Forgot password?</Text>
         </TouchableOpacity>
 

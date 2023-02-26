@@ -8,7 +8,7 @@ import * as firebase from "firebase";
 const firebaseConfig = {
   apiKey: "AIzaSyAwt_wwP22WlgS9UezCl36OGuSiTxMfCJw",
   authDomain: "foodeviry.firebaseapp.com",
-  projectId: "foodeviry",
+  projectId: "Foodivery",
   storageBucket: "foodeviry.appspot.com",
   messagingSenderId: "740955596727",
   appId: "1:740955596727:web:70d07364cc017a83faea32",
