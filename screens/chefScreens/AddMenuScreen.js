@@ -7,35 +7,34 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import { Form, FormItem } from "react-native-form-component";
+import { Form, FormItem, Picker } from "react-native-form-component";
 import { SelectList } from "react-native-dropdown-select-list";
 
 const AddMenuScreen = ({ navigation }) => {
   const days = [
-    { key: "1", value: "Monday" },
-    { key: "2", value: "Tuesday" },
-    { key: "3", value: "Wednesday" },
-    { key: "4", value: "Thursday" },
-    { key: "5", value: "Friday" },
-    { key: "5", value: "Saturday" },
-    { key: "5", value: "Sunday" },
+    { label: "Monday", value: "Monday" },
+    { label: "Tuesday", value: "Tuesday" },
+    { label: "Wednesday", value: "Wednesday" },
+    { label: "Thursday", value: "Thursday" },
+    { label: "Friday", value: "Friday" },
+    { label: "Saturday", value: "Saturday" },
+    { label: "Sunday", value: "Sunday" },
   ];
 
   const food = [
-    { key: "1", value: "Breakfast" },
-    { key: "2", value: "Lunch" },
-    { key: "3", value: "Dinner" },
+    { label: "Breakfast", value: "Breakfast" },
+    { label: "Lunch", value: "Lunch" },
+    { label: "Dinner", value: "Dinner" },
   ];
 
   const [day, setSelectDay] = useState("");
   const [foodTime, setFoodTime] = useState("");
+  const [number, setNumber] = useState(1);
 
   return (
     <View style={styles.container}>
       <View style={styles.firstContainer}>
-        <Text style={styles.MenuTableText}>Menu Table for</Text>
-
-        <SelectList
+        {/* <SelectList
           boxStyles={styles.selectDayContainer}
           inputStyles={styles.selectDayText}
           data={days}
@@ -45,14 +44,18 @@ const AddMenuScreen = ({ navigation }) => {
           dropdownStyles={styles.selectDayContainer}
           dropdownItemStyles={styles.selectDayText}
           defaultOption={days[1]}
-        />
+        /> */}
+        <View style={styles.bannerContainer}>
+          <Image
+            source={require("../../images/chefScreenBanner.png")}
+            resizeMode="contain"
+            style={styles.banner}
+          />
+        </View>
 
-        <Image
-          source={require("../../images/chefScreen1banner.png")}
-          style={styles.banner}
-        />
+        <Text style={styles.MenuTableText}>Add Your Menu</Text>
 
-        <SelectList
+        {/* <SelectList
           boxStyles={styles.selectDayContainer}
           inputStyles={styles.selectDayText}
           data={food}
@@ -62,7 +65,7 @@ const AddMenuScreen = ({ navigation }) => {
           dropdownStyles={styles.selectDayContainer}
           dropdownItemStyles={styles.selectDayText}
           defaultOption={food[1]}
-        />
+        /> */}
       </View>
 
       <ScrollView style={styles.scrollviewContainer}>
@@ -76,16 +79,36 @@ const AddMenuScreen = ({ navigation }) => {
           <FormItem
             label="Item to be added"
             placeholder="Item Name"
-            isRequired
             style={styles.formItems}
-            textInputStyle={{marginLeft:20}}
-            labelStyle={{marginLeft:30}}
+            textInputStyle={{ marginLeft: 20 }}
+            labelStyle={{ marginLeft: 30 }}
           />
+
+          <Picker
+            items={days}
+            label="Select a Day"
+            selectedValue={day}
+            onSelection={(item) => setSelectDay(item.value)}
+            labelStyle={{ marginLeft: 30 }}
+            buttonStyle={styles.picker}
+            selectedValueStyle={{ marginLeft: 30, color: "black" }}
+          />
+
+          <Picker
+            items={food}
+            label="Meal Time"
+            selectedValue={foodTime}
+            onSelection={(item) => setFoodTime(item.value)}
+            labelStyle={{ marginLeft: 30 }}
+            buttonStyle={styles.picker}
+            selectedValueStyle={{ marginLeft: 30, color: "black" }}
+          />
+
+          
           <FormItem
             label="Description"
             placeholder="Description"
-            isRequired
-            textInputStyle={{marginLeft:20}}
+            textInputStyle={{ marginLeft: 20 }}
             style={{
               width: "90%",
               marginLeft: 15,
@@ -93,48 +116,46 @@ const AddMenuScreen = ({ navigation }) => {
               backgroundColor: "#F0F0F0",
               borderRadius: 25,
             }}
-            labelStyle={{marginLeft:30}}
+            labelStyle={{ marginLeft: 30 }}
           />
           <FormItem
             placeholder="Add - ons"
             label="Add-ons"
             style={styles.formItems}
-            textInputStyle={{marginLeft:20}}
-            labelStyle={{marginLeft:30}}
+            textInputStyle={{ marginLeft: 20 }}
+            labelStyle={{ marginLeft: 30 }}
           />
           <FormItem
             label="Capacity"
             placeholder="Item Capacity"
-            isRequired
             style={styles.formItems}
-            textInputStyle={{marginLeft:20}}
-            labelStyle={{marginLeft:30}}
+            textInputStyle={{ marginLeft: 20 }}
+            labelStyle={{ marginLeft: 30 }}
           />
           <FormItem
             label="Amount"
             placeholder="Amount to be charged"
-            isRequired
             style={styles.formItems}
-            textInputStyle={{marginLeft:20}}
-            labelStyle={{marginLeft:30}}
+            textInputStyle={{ marginLeft: 20 }}
+            labelStyle={{ marginLeft: 30 }}
           />
         </Form>
       </ScrollView>
 
       <View style={styles.bottomIcons}>
-        <TouchableOpacity style={{ marginRight: 45 }}>
+        <TouchableOpacity style={{ marginRight: 60 }}>
           <Image
             source={require("../../images/chefScreenIcons/homeIcon.png")}
             style={{ width: 40, height: 40 }}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={{ marginRight: 45 }}>
+        <TouchableOpacity style={{ marginRight: 60 }}>
           <Image
             source={require("../../images/chefScreenIcons/addIcon.png")}
             style={{ width: 40, height: 40 }}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={{ marginRight: 45 }}>
+        <TouchableOpacity style={{ marginRight: 60 }}>
           <Image
             source={require("../../images/chefScreenIcons/cardIcon.png")}
             style={{ width: 40, height: 40 }}
@@ -155,13 +176,18 @@ export default AddMenuScreen;
 
 const styles = StyleSheet.create({
   banner: {
-    borderRadius: 100,
+    width: 375,
+    height: 270,
+    borderRadius: 25,
+    marginBottom: 20,
+    marginTop: 0,
   },
 
   bottomIcons: {
     display: "flex",
     flexDirection: "row",
   },
+
   container: {
     flex: 1,
     display: "flex",
@@ -185,6 +211,15 @@ const styles = StyleSheet.create({
   MenuTableText: {
     fontSize: 30,
     padding: 20,
+    paddingBottom:30,
+    fontWeight: "700",
+  },
+  picker: {
+    width: "90%",
+    marginLeft: 15,
+
+    backgroundColor: "#F0F0F0",
+    borderRadius: 25,
   },
   scrollviewContainer: {
     paddingTop: 15,
@@ -196,7 +231,7 @@ const styles = StyleSheet.create({
     width: "50%",
     borderRadius: 25,
     marginLeft: 90,
-    marginBottom:20
+    marginBottom: 20,
   },
 
   selectDayContainer: {
