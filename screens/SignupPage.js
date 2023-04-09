@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   },
 
   imageContainer: {
-    marginTop:50
+    marginTop:5
   },
 
   signupContainer: {

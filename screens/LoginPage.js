@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, {useState } from "react";
 
 import {
   Image,
@@ -9,15 +9,17 @@ import {
   View,
 } from "react-native";
 
-import changePassword from "./../firebasedump/ResetPassword"
+import changePassword from "./../firebasedump/ResetPassword";
+
 
 import { handleLogin } from "../firebasedump/HandleLogin";
 
-const LoginPage = ({ navigation }) => {
+const LoginPage = ({ navigation, route}) => {
 
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
+
 
 
   return (
@@ -84,7 +86,7 @@ const LoginPage = ({ navigation }) => {
         </TouchableOpacity> */}
         <TouchableOpacity
           style={styles.signupTextContainer}
-          onPress={()=>handleLogin(email, password, navigation)}
+          onPress={()=>handleLogin(email, password, navigation, route)}
         >
           <Text style={styles.signupText}>Login</Text>
         </TouchableOpacity>
@@ -111,7 +113,7 @@ const styles = StyleSheet.create({
 
   },
   imageContainer: {
-    marginBottom: 60
+    marginBottom: 100
   },
 
   img: {

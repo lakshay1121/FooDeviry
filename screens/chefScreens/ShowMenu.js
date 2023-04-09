@@ -21,13 +21,13 @@ const ShowMenu = ({ navigation }) => {
                 <Image source={require('../../images/chefScreenIcons/chefBanner.webp')} style={styles.bannerImage} />
 
                 <View>
-                    <Text style={{ fontWeight: '600', fontSize: 20 }}>𝙎𝙖𝙩𝙮𝙖𝙢 𝙅𝙖𝙩𝙖𝙫</Text>
+                    <Text style={{ fontWeight: '600', fontSize: 20 }}>Satyam Bhardwaj</Text>
                     <Text>chef id : 1233</Text>
                     <Text>user ratings : 4.5</Text>
                 </View>
             </View>
 
-            <Text style={{ fontSize: 32, fontStyle: "italic" }}>𝙈𝙚𝙣𝙪 𝙏𝙖𝙗𝙡𝙚</Text>
+            <Text style={{ fontSize: 32, fontStyle: "italic" }}>Menu Table</Text>
 
             <ScrollView style={styles.scrollviewContainer} contentContainerStyle={styles.scrollContent}>
 

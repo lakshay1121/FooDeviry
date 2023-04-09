@@ -17,7 +17,7 @@ import { Barlow_400Regular, Barlow_300Light, Barlow_700Bold, Barlow_500Medium_It
 
 import { useFonts } from "@expo-google-fonts/barlow/useFonts";
 
-const Screen4 = ({ navigation }) => {
+const Screen4 = ({ navigation, route }) => {
 
 let [fontsLoaded, error] = useFonts({
   Barlow_300Light, Barlow_400Regular, Barlow_700Bold, 
@@ -25,6 +25,8 @@ let [fontsLoaded, error] = useFonts({
   Barlow_600SemiBold,
   Barlow_300Light_Italic
 })
+
+const { provider, user } = route.params;
 
 if(!fontsLoaded){
   return <AppLoading/>
@@ -58,7 +60,7 @@ if(!fontsLoaded){
           <TouchableOpacity
             style={styles.locateMeContainer}
             onPress={() => {
-              navigation.navigate("Screen5");
+              navigation.navigate("Screen5", {provider, user});
             }}
           >
             <Ionicons name="location" size={24} color="black" />

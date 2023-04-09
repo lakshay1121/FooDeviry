@@ -4,9 +4,26 @@ import MapView, { Marker } from "react-native-maps";
 import { MaterialIcons } from "@expo/vector-icons";
 import * as Location from "expo-location";
 
-const Screen5 = ({ navigation }) => {
+const Screen5 = ({ navigation , route}) => {
   const [region, setRegion] = useState(null);
+  const [address, setAddress] = useState('');
+  const { provider, user } = route.params;
 
+  const handleConfirmLocation = async () => {
+  
+    try {
+      let location = await Location.reverseGeocodeAsync(region);
+      let address = location[0].name + ', ' + location[0].city + ',' + location[0].postalCode;
+      setAddress(address);
+      navigation.navigate('Dashboard', { address: address });
+    } catch (error) {
+      console.log(error);
+      setAddress('location not found');
+      navigation.navigate('Dashboard', { address: 'Location not found' });
+    }
+  };
+
+  
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -71,7 +88,7 @@ const Screen5 = ({ navigation }) => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.confirmButton}
-          onPress={() => navigation.navigate("AddMenuScreen")}
+          onPress={handleConfirmLocation}
         >
           <Text style={styles.confirmButtonText}>Confirm Location</Text>
         </TouchableOpacity>

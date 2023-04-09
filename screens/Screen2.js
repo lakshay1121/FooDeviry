@@ -1,13 +1,33 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
-import React from "react";
+
+import React, {useState} from "react";
 import { StatusBar } from 'react-native';
 
 import changePassword from "./../firebasedump/ResetPassword"
 
 
 const Screen2 = ({ navigation }) => {
+
+  const [provider, setProvider] = useState(false);
+  const [user, setUser] = useState(false);
+ 
+  const handleProviderPress = () => {
+   
+    setProvider(true);
+    setUser(false);
+
+    navigation.navigate('LoginPage', { provider, user });
+  };
   
-  
+  const handleUserPress = () => {
+    setUser(true);
+    setProvider(false);
+
+    navigation.navigate('LoginPage', { provider, user });
+  };
+
+ 
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -15,7 +35,9 @@ const Screen2 = ({ navigation }) => {
       </View>
       <View style={styles.secondsection}>
         <View style={styles.loginSignupContainer}>
-          <TouchableOpacity style={styles.loginContainer} onPress={() => { navigation.navigate('LoginPage') }}  >
+          <TouchableOpacity style={styles.loginContainer} onPress={() => { 
+  
+            navigation.navigate('LoginPage') }}  >
             <Text style={styles.loginSignupText}>Login</Text>
           </TouchableOpacity>
 
@@ -28,13 +50,14 @@ const Screen2 = ({ navigation }) => {
 
 
           <View style={styles.provider}>
-            <TouchableOpacity style={styles.providercontainer} onPress={() => { navigation.navigate('LoginPage') }}  >
+            <TouchableOpacity style={styles.providercontainer} onPress={
+              handleProviderPress}  >
               <Text style={styles.providertext}>Provider</Text>
             </TouchableOpacity>
           </View>
           <Text style={styles.or}>OR</Text>
           <View style={styles.user}>
-            <TouchableOpacity style={styles.usercontainer} onPress={() => { navigation.navigate('LoginPage') }}  >
+            <TouchableOpacity style={styles.usercontainer} onPress={handleUserPress}>
               <Text style={styles.usertext}>User</Text>
             </TouchableOpacity>
           </View>
@@ -134,7 +157,7 @@ const styles = StyleSheet.create({
   },
   
   imageContainer: {
-    marginBottom: 60
+    marginBottom: 80
   },
 
   img: {

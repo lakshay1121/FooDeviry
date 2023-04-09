@@ -11,6 +11,16 @@ import Screen5 from "../screens/Screen5";
 import AddMenuScreen from "../screens/chefScreens/AddMenuScreen";
 import ShowMenu from "../screens/chefScreens/ShowMenu";
 import ShowOrders from "../screens/chefScreens/ShowOrders";
+import Dashboard from "../screens/userScreens/Dashboard";
+import Patient1 from "../patient/Patient1";
+import Patientno from "../patient/Patientno";
+import Patientyes from "../patient/Patientyes";
+import PatientConfirm from "../patient/patientDatabase/PatientConfirm";
+
+import Menutable from "../screens/userScreens/Menutable";
+
+
+
 
 const NavigationHandler = () => {
   const Stack = createNativeStackNavigator();
@@ -18,11 +28,17 @@ const NavigationHandler = () => {
   return (
     <NavigationContainer style={styles.container}>
       <Stack.Navigator initialRouteName="Screen1">
-        {}
+        { }
 
         <Stack.Screen
           name="Screen1"
           component={Screen1}
+          options={{ headerShown: false }}
+        />
+
+<Stack.Screen
+          name="Menutable"
+          component={Menutable}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -56,6 +72,12 @@ const NavigationHandler = () => {
         />
 
         <Stack.Screen
+          name="Dashboard"
+          component={Dashboard}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
           name="AddMenuScreen"
           component={AddMenuScreen}
           options={{ headerShown: false }}
@@ -71,6 +93,33 @@ const NavigationHandler = () => {
           component={ShowOrders}
           options={{ headerShown: false }}
         />
+
+        <Stack.Screen
+          name="Patient1"
+          component={Patient1}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="Patientyes"
+          component={Patientyes}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Patientno"
+          component={Patientno}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="PatientConfirm"
+          component={PatientConfirm}
+          options={{ headerShown: false }}
+        />
+
+
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
